@@ -1,0 +1,15 @@
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-input, .form-checkbox {
+             transition: all 0.2s ease-in-out;
+        }
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s, visibility 0.2s;
+        }
+        .has-tooltip:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
