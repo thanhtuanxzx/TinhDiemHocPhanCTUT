@@ -1,68 +1,158 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Công cụ Tính điểm Học phần</title>
+    <title>Công cụ Tính điểm Học phần - CTUT</title>
+
+    <!-- Mô tả SEO -->
+    <meta name="description"
+        content="Công cụ tính điểm học phần dành cho sinh viên CTUT. Nhập các cột điểm và trọng số để xem kết quả chi tiết, giúp bạn dễ dàng tính điểm trung bình và theo dõi tiến độ học tập.">
+
+    <!-- Từ khóa SEO -->
+    <meta name="keywords"
+        content="tính điểm học phần ctut, ctut, điểm số, tính điểm, điểm trung bình, điểm GPA, công cụ học tập, Đại học Kỹ thuật - Công nghệ Cần Thơ, sinh viên ctut, GPA calculator, tính điểm tín chỉ">
+
+    <meta name="author" content="thanhtuanxzx">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tinhdiemhp-ctut.kesug.com">
+
+    <!-- Open Graph (Facebook, Zalo, Messenger) -->
+    <meta property="og:title" content="Công cụ Tính điểm Học phần - CTUT">
+    <meta property="og:description" content="Tính điểm học phần dễ dàng, chính xác và nhanh chóng cho sinh viên CTUT.">
+    <meta property="og:url" content="https://tinhdiemhp-ctut.kesug.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tinhdiemhp-ctut.kesug.com/logo.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:site_name" content="Công cụ Tính điểm CTUT">
+    <meta property="og:locale" content="vi_VN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Công cụ Tính điểm Học phần - CTUT">
+    <meta name="twitter:description" content="Tính điểm học phần CTUT nhanh và tiện lợi.">
+    <meta name="twitter:image" content="https://tinhdiemhp-ctut.kesug.com/logo.png">
+
+    <!-- Favicon và Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" href="https://tinhdiemhp-ctut.kesug.com/logo.png" type="image/png" sizes="512x512">
+    <link rel="apple-touch-icon" href="https://tinhdiemhp-ctut.kesug.com/logo.png">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b4a6f" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <!-- Schema.org cho Google -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Công cụ Tính điểm Học phần CTUT",
+          "url": "https://tinhdiemhp-ctut.kesug.com",
+          "logo": "https://tinhdiemhp-ctut.kesug.com/logo.png",
+          "description": "Công cụ giúp sinh viên CTUT tính điểm học phần nhanh chóng và chính xác.",
+          "applicationCategory": "Education",
+          "operatingSystem": "All",
+          "image": "https://tinhdiemhp-ctut.kesug.com/logo.png",
+          "author": {
+            "@type": "Person",
+            "name": "thanhtuanxzx",
+            "url": "https://github.com/thanhtuanxzx"
+          }
+        }
+        </script>
 </head>
+
 <body class="bg-slate-100 min-h-screen flex flex-col">
 
     <header class="bg-white shadow-sm sticky top-0 z-20">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                 </svg>
                 <h1 class="text-xl font-bold text-slate-800">Công cụ Tính điểm CTUT</h1>
             </div>
             <div>
-                <a href="https://phongctct.ctuet.edu.vn/wp-content/uploads/2023/04/493_qd_quydinh_daotao_trinhdo_daihoc_chinhquy_theo_hethong_tinchi.pdf" target="_blank" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Quy định CTUT</a>
+                <a href="https://phongctct.ctuet.edu.vn/wp-content/uploads/2023/04/493_qd_quydinh_daotao_trinhdo_daihoc_chinhquy_theo_hethong_tinchi.pdf"
+                    target="_blank"
+                    class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Quy định CTUT</a>
             </div>
         </nav>
     </header>
 
     <main class="flex-grow flex items-center justify-center p-4 py-8">
         <div class="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-6 md:p-10">
-            
+
             <div class="text-center mb-8">
-                <h1 class="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500 pb-2">
+                <h1
+                    class="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500 pb-2">
                     Công cụ Tính điểm Học phần
                 </h1>
-                <p class="text-slate-500 mt-2">Nhập các cột điểm và trọng số (%) để xem kết quả chi tiết. <br> Hãy thay đổi nội dung cột điểm để phù hợp với môn học cần tính điểm.</p>
+                <p class="text-slate-500 mt-2">Nhập các cột điểm và trọng số (%) để xem kết quả chi tiết. <br> Hãy thay
+                    đổi nội dung cột điểm để phù hợp với môn học cần tính điểm.</p>
             </div>
 
             <form id="grade-form" class="space-y-4">
-                <div class="grid grid-cols-12 gap-2 md:gap-4 items-center px-2 py-2 bg-slate-50 rounded-lg text-sm font-semibold text-slate-600">
+                <div
+                    class="grid grid-cols-12 gap-2 md:gap-4 items-center px-2 py-2 bg-slate-50 rounded-lg text-sm font-semibold text-slate-600">
                     <div class="col-span-5">Tên Cột Điểm</div>
                     <div class="col-span-2 text-center flex items-center justify-center gap-1 relative has-tooltip">
                         <span>Trọng số (%)</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 cursor-help" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        <div class="tooltip absolute bottom-full mb-2 w-64 bg-slate-800 text-white text-sm rounded-lg shadow-lg p-3 z-10 text-left pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 cursor-help" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div
+                            class="tooltip absolute bottom-full mb-2 w-64 bg-slate-800 text-white text-sm rounded-lg shadow-lg p-3 z-10 text-left pointer-events-none">
                             <p class="font-bold">Trọng số là gì?</p>
-                            <p class="mt-1 font-normal">Tương ứng với cột <strong>% Điểm tối đa</strong> trong <strong>Bảng điểm cá nhân.</strong> <strong class="text-yellow-300">Tổng trọng số của tất cả các cột phải là 100%</strong> để đảm bảo kết quả chính xác nhất.</p>
+                            <p class="mt-1 font-normal">Tương ứng với cột <strong>% Điểm tối đa</strong> trong
+                                <strong>Bảng điểm cá nhân.</strong> <strong class="text-yellow-300">Tổng trọng số của
+                                    tất cả các cột phải là 100%</strong> để đảm bảo kết quả chính xác nhất.
+                            </p>
                         </div>
                     </div>
                     <div class="col-span-2 text-center flex items-center justify-center gap-1 relative has-tooltip">
                         <span>Điểm (0-10)</span>
-                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 cursor-help" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        <div class="tooltip absolute bottom-full mb-2 w-64 bg-slate-800 text-white text-sm rounded-lg shadow-lg p-3 z-10 text-left pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 cursor-help" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div
+                            class="tooltip absolute bottom-full mb-2 w-64 bg-slate-800 text-white text-sm rounded-lg shadow-lg p-3 z-10 text-left pointer-events-none">
                             <p class="font-bold">Thang điểm quy định?</p>
-                            <p class="mt-1 font-normal">Vui lòng nhập điểm theo <strong class="text-yellow-300">thang điểm 10</strong>. Công cụ có hỗ trợ tính số thập phân, ví dụ: 8.5, 7.8...</p>
+                            <p class="mt-1 font-normal">Vui lòng nhập điểm theo <strong class="text-yellow-300">thang
+                                    điểm 10</strong>. Công cụ có hỗ trợ tính số thập phân, ví dụ: 8.5, 7.8...</p>
                         </div>
                     </div>
                     <div class="col-span-2 text-center flex items-center justify-center gap-1 relative has-tooltip">
                         <span>Thi cuối kỳ?</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 cursor-help" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        <div class="tooltip absolute bottom-full mb-2 w-64 bg-slate-800 text-white text-sm rounded-lg shadow-lg p-3 z-10 text-left pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 cursor-help" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div
+                            class="tooltip absolute bottom-full mb-2 w-64 bg-slate-800 text-white text-sm rounded-lg shadow-lg p-3 z-10 text-left pointer-events-none">
                             <p class="font-bold">Tại sao cột này quan trọng?</p>
-                            <p class="mt-1 font-normal">Theo quy chế, nếu điểm thi kết thúc học phần <strong class="text-yellow-300">&lt; 1.0 điểm</strong>, bạn sẽ bị tính là <strong class="text-red-400">"Nợ môn" (điểm F)</strong> bất kể tổng điểm của bạn như thế nào.</p>
-                            <p class="mt-2 font-normal">Hãy tích vào ô này để công cụ áp dụng đúng quy tắc điểm liệt.</p>
+                            <p class="mt-1 font-normal">Theo quy chế, nếu điểm thi kết thúc học phần <strong
+                                    class="text-yellow-300">&lt; 1.0 điểm</strong>, bạn sẽ bị tính là <strong
+                                    class="text-red-400">"Nợ môn" (điểm F)</strong> bất kể tổng điểm của bạn như thế
+                                nào.</p>
+                            <p class="mt-2 font-normal">Hãy tích vào ô này để công cụ áp dụng đúng quy tắc điểm liệt.
+                            </p>
                         </div>
                     </div>
                     <div class="col-span-1"></div>
@@ -72,32 +162,43 @@
                 </div>
 
                 <div class="text-right font-semibold text-slate-700 pr-2 pt-2">
-                    Tổng trọng số hiện tại: 
+                    Tổng trọng số hiện tại:
                     <span id="current-total-weight" class="font-bold text-lg transition-colors">0%</span>
                 </div>
 
-                <button type="button" id="prefill-btn" class="w-full text-slate-600 font-semibold py-2.5 px-4 rounded-lg border border-slate-300 hover:bg-slate-50 transition-all duration-300 flex items-center justify-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H4zM12 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2h-2zM4 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H4zM12 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2z"/></svg>
+                <button type="button" id="prefill-btn"
+                    class="w-full text-slate-600 font-semibold py-2.5 px-4 rounded-lg border border-slate-300 hover:bg-slate-50 transition-all duration-300 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                            d="M4 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H4zM12 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2h-2zM4 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H4zM12 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2z" />
+                    </svg>
                     Điền sẵn ví dụ
                 </button>
 
-                <button type="button" id="add-component-btn" class="w-full text-blue-600 font-semibold py-2.5 px-4 rounded-lg border-2 border-dashed border-slate-300 hover:bg-slate-50 hover:border-blue-500 transition-all duration-300 flex items-center justify-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" /></svg>
+                <button type="button" id="add-component-btn"
+                    class="w-full text-blue-600 font-semibold py-2.5 px-4 rounded-lg border-2 border-dashed border-slate-300 hover:bg-slate-50 hover:border-blue-500 transition-all duration-300 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                            clip-rule="evenodd" />
+                    </svg>
                     Thêm Cột Điểm
                 </button>
 
-                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-700 hover:to-sky-600 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg shadow-blue-500/30">
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-700 hover:to-sky-600 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg shadow-blue-500/30">
                     Tính toán Kết quả
                 </button>
             </form>
-            
+
             <div id="result" class="mt-10 hidden">
                 <div class="border-t border-slate-200 pt-6">
-                     <h2 class="text-2xl font-bold text-center text-slate-800 mb-6">Kết quả Học tập Chi tiết</h2>
+                    <h2 class="text-2xl font-bold text-center text-slate-800 mb-6">Kết quả Học tập Chi tiết</h2>
                     <div class="bg-slate-50 rounded-lg p-6 space-y-4 text-base">
                         <div class="flex justify-between items-center">
                             <span class="text-slate-600">Tổng trọng số đã nhập:</span>
-                            <span id="total-weight" class="font-bold text-slate-800 bg-slate-200 px-2 py-0.5 rounded"></span>
+                            <span id="total-weight"
+                                class="font-bold text-slate-800 bg-slate-200 px-2 py-0.5 rounded"></span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-slate-600">Điểm tổng kết (hệ 10):</span>
@@ -130,7 +231,8 @@
 
     <footer class="bg-white mt-auto">
         <div class="container mx-auto px-6 py-4 text-center text-sm text-slate-500">
-            <p>&copy; 2025 - Phát triển bởi <a href="https://github.com/thanhtuanxzx" target="_blank" >thanhtuanxzx</a>.</p>
+            <p>&copy; 2025 - Phát triển bởi <a href="https://github.com/thanhtuanxzx" target="_blank">thanhtuanxzx</a>.
+            </p>
         </div>
     </footer>
     <script src="script.js" defer></script>
