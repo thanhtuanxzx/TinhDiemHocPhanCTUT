@@ -5,6 +5,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const gradeForm = document.getElementById('grade-form');
     const resultDiv = document.getElementById('result');
     const currentTotalWeightEl = document.getElementById('current-total-weight');
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const setTheme = (theme) => {
+        try {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        } catch (e) { /* noop */ }
+    };
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(isDark ? 'light' : 'dark');
+        });
+    }
     
     // CTUT configuration (Trường ĐH Kỹ Thuật - Công Nghệ Cần Thơ)
     const CTUT_RULES = {
@@ -50,25 +70,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const createComponentRow = (name = '', weight = '', score = '', isFinal = false) => {
         const row = document.createElement('div');
-        row.className = 'grid grid-cols-12 gap-2 md:gap-4 items-center component-row p-1.5 hover:bg-slate-50 rounded-lg';
+        row.className = 'component-row bg-slate-50 dark:bg-slate-900/30 rounded-lg p-1 sm:p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700';
         
         row.innerHTML = `
-            <div class="col-span-5">
-                <input type="text" class="form-input w-full bg-slate-100 border-transparent rounded-md focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500" placeholder="VD: Chuyên cần" value="${name}">
-            </div>
-            <div class="col-span-2">
-                <input type="number" class="form-input component-weight w-full bg-slate-100 border-transparent rounded-md text-center focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500" placeholder="%" min="0" max="100" step="1" value="${weight}">
-            </div>
-            <div class="col-span-2">
-                <input type="number" class="form-input component-score w-full bg-slate-100 border-transparent rounded-md text-center focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-blue-500" placeholder="Điểm" min="0" max="${CTUT_RULES.inputScaleMax}" step="0.1" value="${score}">
-            </div>
-            <div class="col-span-2 flex justify-center">
-                <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600 rounded-sm border-slate-300 focus:ring-blue-500 component-final" ${isFinal ? 'checked' : ''}>
-            </div>
-            <div class="col-span-1 flex justify-center">
-                <button type="button" class="remove-btn text-slate-400 hover:text-red-500 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-                </button>
+            <!-- Grid layout for all screens -->
+            <div class="grid grid-cols-12 gap-1 sm:gap-2 md:gap-4 items-center">
+                <div class="col-span-5">
+                    <input type="text" class="form-input w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md px-1.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:bg-slate-900 transition-colors" placeholder="VD: Chuyên cần" value="${name}">
+                </div>
+                <div class="col-span-2">
+                    <input type="number" class="form-input component-weight w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md px-1 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-center text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:bg-slate-900 transition-colors" placeholder="%" min="0" max="100" step="1" value="${weight}">
+                </div>
+                <div class="col-span-2">
+                    <input type="number" class="form-input component-score w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md px-1 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-center text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:bg-slate-900 transition-colors" placeholder="Điểm" min="0" max="${CTUT_RULES.inputScaleMax}" step="0.1" value="${score}">
+                </div>
+                <div class="col-span-2 flex justify-center">
+                    <input type="checkbox" class="form-checkbox h-4 w-4 sm:h-5 sm:w-5 text-blue-600 dark:text-blue-500 rounded border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-0 component-final cursor-pointer" ${isFinal ? 'checked' : ''}>
+                </div>
+                <div class="col-span-1 flex justify-center">
+                    <button type="button" class="remove-btn text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-colors p-0.5 sm:p-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-6 sm:w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    </button>
+                </div>
             </div>
         `;
         componentsContainer.appendChild(row);
@@ -132,6 +155,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (e.target.classList.contains('component-weight')) {
             updateTotalWeight();
+        }
+    });
+    
+    // Mobile tooltip handling (touch events)
+    document.addEventListener('click', function(e) {
+        const tooltipTrigger = e.target.closest('.has-tooltip');
+        if (tooltipTrigger) {
+            // Close other tooltips
+            document.querySelectorAll('.has-tooltip.tooltip-active').forEach(el => {
+                if (el !== tooltipTrigger) {
+                    el.classList.remove('tooltip-active');
+                }
+            });
+            // Toggle current tooltip
+            tooltipTrigger.classList.toggle('tooltip-active');
+        } else {
+            // Close all tooltips when clicking outside
+            document.querySelectorAll('.has-tooltip.tooltip-active').forEach(el => {
+                el.classList.remove('tooltip-active');
+            });
         }
     });
 
@@ -208,10 +251,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const isFailed = letterGrade === 'F';
         if (isFailed) {
-            noteEl.classList.add('text-red-600');
+            noteEl.classList.add('text-red-600', 'dark:text-red-400');
         }
         status = isFailed ? 'Không đạt' : 'Đạt';
-        statusClass = isFailed ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700';
 
         document.getElementById('total-weight').textContent = `${totalWeight}%`;
         document.getElementById('final-score').textContent = finalScore.toFixed(CTUT_RULES.roundingDecimals);
@@ -221,10 +263,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const statusEl = document.getElementById('status');
         statusEl.textContent = status;
-        statusEl.className = `font-bold text-xl px-4 py-1.5 rounded-full ${statusClass}`;
+        statusEl.className = `font-bold text-xl px-4 py-1.5 rounded-full ${isFailed ? 'status-fail' : 'status-pass'}`;
         
         noteEl.innerHTML = note;
 
         resultDiv.classList.remove('hidden');
+        
+        // Smooth scroll to result section
+        setTimeout(() => {
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
     });
 });
