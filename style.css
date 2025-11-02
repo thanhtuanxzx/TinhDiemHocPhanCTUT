@@ -26,47 +26,7 @@
             transform: translateY(0);
         }
         
-        /* Enhanced dark mode styling */
-        .dark .form-input {
-            background-color: #1e293b; /* slate-800 */
-            color: #f1f5f9; /* slate-100 */
-            border-color: #334155; /* slate-700 */
-        }
-        
-        .dark .form-input::placeholder {
-            color: #94a3b8; /* slate-400 */
-        }
-        
-        .dark .form-input:focus {
-            background-color: #0f172a; /* slate-900 */
-            border-color: #3b82f6; /* blue-500 */
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        
-        .dark .form-checkbox {
-            border-color: #475569; /* slate-600 */
-            background-color: #1e293b; /* slate-800 */
-        }
-        
-        .dark .form-checkbox:checked {
-            background-color: #3b82f6; /* blue-500 */
-            border-color: #3b82f6;
-        }
-        
-        .dark .form-checkbox:focus {
-            ring-color: rgba(59, 130, 246, 0.3);
-        }
-        
-        .dark .remove-btn {
-            color: #94a3b8; /* slate-400 */
-        }
-        
-        .dark .remove-btn:hover {
-            color: #f87171; /* red-400 */
-            background-color: rgba(248, 113, 113, 0.1);
-        }
-        
-        /* Light mode enhancements */
+        /* Form input enhancements */
         .form-input {
             border: 1px solid transparent;
         }
@@ -75,25 +35,15 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
         
-        /* Status badge improvements for dark mode */
+        /* Status badge styling */
         .status-pass {
             background-color: #dcfce7; /* green-100 */
             color: #166534; /* green-800 */
         }
         
-        .dark .status-pass {
-            background-color: rgba(20, 83, 45, 0.3); /* green-900/30 */
-            color: #86efac; /* green-300 */
-        }
-        
         .status-fail {
             background-color: #fee2e2; /* red-100 */
             color: #991b1b; /* red-800 */
-        }
-        
-        .dark .status-fail {
-            background-color: rgba(127, 29, 29, 0.3); /* red-900/30 */
-            color: #fca5a5; /* red-300 */
         }
         
         /* Smooth scroll behavior */
@@ -105,10 +55,6 @@
         *:focus-visible {
             outline: 2px solid #3b82f6;
             outline-offset: 2px;
-        }
-        
-        .dark *:focus-visible {
-            outline-color: #60a5fa;
         }
         
         /* Fade-in animation for results */
@@ -136,7 +82,7 @@
             transform: scale(0.98);
         }
         
-        /* Better scrollbar styling for dark mode */
+        /* Better scrollbar styling */
         ::-webkit-scrollbar {
             width: 10px;
             height: 10px;
@@ -146,25 +92,13 @@
             background: #f1f5f9;
         }
         
-        .dark ::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        
         ::-webkit-scrollbar-thumb {
             background: #cbd5e1;
             border-radius: 5px;
         }
         
-        .dark ::-webkit-scrollbar-thumb {
-            background: #475569;
-        }
-        
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
-        }
-        
-        .dark ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
         }
         
         /* Mobile optimizations */

@@ -6,26 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultDiv = document.getElementById('result');
     const currentTotalWeightEl = document.getElementById('current-total-weight');
 
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const setTheme = (theme) => {
-        try {
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
-        } catch (e) { /* noop */ }
-    };
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(isDark ? 'light' : 'dark');
-        });
-    }
-    
     // CTUT configuration (Trường ĐH Kỹ Thuật - Công Nghệ Cần Thơ)
     const CTUT_RULES = {
         minFinalExamWeightRatio: 0.5, // ĐKTHP chiếm tối thiểu 50% tổng trọng số
@@ -70,25 +50,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const createComponentRow = (name = '', weight = '', score = '', isFinal = false) => {
         const row = document.createElement('div');
-        row.className = 'component-row bg-slate-50 dark:bg-slate-900/30 rounded-lg p-1 sm:p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700';
+        row.className = 'component-row bg-slate-50 rounded-lg p-1 sm:p-1.5 hover:bg-slate-100 transition-colors border border-slate-200';
         
         row.innerHTML = `
             <!-- Grid layout for all screens -->
             <div class="grid grid-cols-12 gap-1 sm:gap-2 md:gap-4 items-center">
                 <div class="col-span-5">
-                    <input type="text" class="form-input w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md px-1.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:bg-slate-900 transition-colors" placeholder="VD: Chuyên cần" value="${name}">
+                    <input type="text" class="form-input w-full bg-white border border-slate-200 rounded-md px-1.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="VD: Chuyên cần" value="${name}">
                 </div>
                 <div class="col-span-2">
-                    <input type="number" class="form-input component-weight w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md px-1 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-center text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:bg-slate-900 transition-colors" placeholder="%" min="0" max="100" step="1" value="${weight}">
+                    <input type="number" class="form-input component-weight w-full bg-white border border-slate-200 rounded-md px-1 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-center text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="%" min="0" max="100" step="1" value="${weight}">
                 </div>
                 <div class="col-span-2">
-                    <input type="number" class="form-input component-score w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md px-1 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-center text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:bg-slate-900 transition-colors" placeholder="Điểm" min="0" max="${CTUT_RULES.inputScaleMax}" step="0.1" value="${score}">
+                    <input type="number" class="form-input component-score w-full bg-white border border-slate-200 rounded-md px-1 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-center text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Điểm" min="0" max="${CTUT_RULES.inputScaleMax}" step="0.1" value="${score}">
                 </div>
                 <div class="col-span-2 flex justify-center">
-                    <input type="checkbox" class="form-checkbox h-4 w-4 sm:h-5 sm:w-5 text-blue-600 dark:text-blue-500 rounded border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-0 component-final cursor-pointer" ${isFinal ? 'checked' : ''}>
+                    <input type="checkbox" class="form-checkbox h-4 w-4 sm:h-5 sm:w-5 text-blue-600 rounded border-slate-300 focus:ring-2 focus:ring-blue-500 focus:ring-offset-0 component-final cursor-pointer" ${isFinal ? 'checked' : ''}>
                 </div>
                 <div class="col-span-1 flex justify-center">
-                    <button type="button" class="remove-btn text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-colors p-0.5 sm:p-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20">
+                    <button type="button" class="remove-btn text-slate-400 hover:text-red-500 transition-colors p-0.5 sm:p-1 rounded hover:bg-red-50">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-6 sm:w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                     </button>
                 </div>
@@ -251,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const isFailed = letterGrade === 'F';
         if (isFailed) {
-            noteEl.classList.add('text-red-600', 'dark:text-red-400');
+            noteEl.classList.add('text-red-600');
         }
         status = isFailed ? 'Không đạt' : 'Đạt';
 
